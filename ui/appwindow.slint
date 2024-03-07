@@ -1,0 +1,42 @@
+import { Button, VerticalBox, LineEdit, ComboBox  } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    
+    in-out property<string> output: "";
+    
+    callback calculate(string, string, string);
+
+    VerticalBox {
+        Text {
+            text: "Input:";
+        }
+        inputTemp := LineEdit {
+            placeholder_text: "Temp Temperature";
+        }
+        inputUnit := ComboBox {
+            width: 200px;
+            height: 50px;
+            model: ["Celsius", "Fahrenheit", "Kelvin"];
+            current-value: "Celsius";
+        }
+        Text {
+            text: "Desiered Unit:";
+        }
+        conversionUnit := ComboBox {
+            width: 200px;
+            height: 50px;
+            model: ["Celsius", "Fahrenheit", "Kelvin"];
+            current-value: "Celsius";
+        }
+        Text {
+            text: "Result: \{root.output}";
+            font-size: 24px;
+        }
+        Button {
+            text: "Calculate";
+            clicked => {
+                calculate(inputUnit.current-value, inputTemp.text, conversionUnit.current-value);
+            }
+        }
+    }
+}
