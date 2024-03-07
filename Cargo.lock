@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "simple-app"
+name = "temperature-converter"
 version = "0.1.0"
